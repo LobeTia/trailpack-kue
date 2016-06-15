@@ -1,2 +1,2 @@
 # trailpack-kue
-Trails Kue integration
+📦 Trails Kue integration
