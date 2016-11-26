@@ -72,11 +72,11 @@ Define tasks in `api.tasks`.  Tasks are run by kue.
 const Task = require("trailpack-kue").Task
 
 module.exports = class HelloWorldTask extends Task {
-  contructor(){
-      super()
+  contructor(app){
+      super(app)
   }
     
-  run(job, done) {
+  run(job, done, app) {
     console.log("Hello ", job.data.name);
     done();
   }

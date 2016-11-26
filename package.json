@@ -10,10 +10,10 @@
   },
   "main": "index.js",
   "keywords": [
-    "trails",
-    "trailsj",
     "kue",
     "trailpack",
+    "trails",
+    "trailsj",
     "trailjs"
   ],
   "dependencies": {
