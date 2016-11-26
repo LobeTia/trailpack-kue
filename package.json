@@ -1,0 +1,43 @@
+{
+  "name": "trailpack-kue",
+  "version": "0.0.0",
+  "description": "Kue implementation for TrailsJs.io",
+  "homepage": "http://trailsjs.io",
+  "author": {
+    "name": "Mattia Lobertini <lobetia@gmail.com>",
+    "email": "lobetia@gmail.com",
+    "url": "https://github.com/lobetia/trailpack-kue"
+  },
+  "main": "index.js",
+  "keywords": [
+    "trails",
+    "trailsj",
+    "kue",
+    "trailpack",
+    "trailjs"
+  ],
+  "dependencies": {
+    "kue": "0.11.5",
+    "trailpack": "2.0.1"
+  },
+  "devDependencies": {
+    "lodash": "^4.11.1",
+    "trails": "latest",
+    "eslint": "^2.4",
+    "eslint-config-trails": "^1.0.4",
+    "mocha": "^2.4.5",
+    "smokesignals": "^1.0.9",
+    "trailpack-core": "^1.0.0-beta-6"
+  },
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "eslintConfig": {
+    "extends": "trails"
+  },
+  "repository": "ssh://git@bitbucket.org/subluminar/gestionaleagenti_core",
+  "license": "MIT"
+}
