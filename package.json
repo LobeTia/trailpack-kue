@@ -38,6 +38,6 @@
   "eslintConfig": {
     "extends": "trails"
   },
-  "repository": "ssh://git@bitbucket.org/subluminar/gestionaleagenti_core",
+  "repository": "https://github.com/LobeTia/trailpack-kue",
   "license": "MIT"
 }
