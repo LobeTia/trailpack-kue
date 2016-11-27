@@ -12,6 +12,7 @@ module.exports = class KueTrailpack extends Trailpack {
     if (!this.app.config.kue) throw new Error("config.kue not defined")
     if (!this.app.config.kue.tasks) throw new Error("config.kue.tasks not defined")
     if (!this.app.config.kue.webui) throw new Error("config.kue.webui not defined")
+    if (!this.app.config.kue.driver) throw new Error("config.kue.driver not defined")
   }
 
   /**

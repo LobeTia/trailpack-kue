@@ -11,7 +11,7 @@ module.exports = class KueService extends Service {
   init() {
     const config = this.app.config.kue;
 
-    this.kueInstance = Kue.createQueue();
+    this.kueInstance = Kue.createQueue(config.driver);
     this.tasks       = {}
 
     const tasks = Object.keys(config.tasks)

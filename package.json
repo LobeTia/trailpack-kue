@@ -1,6 +1,6 @@
 {
   "name": "trailpack-kue",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Kue implementation for TrailsJs.io",
   "homepage": "http://trailsjs.io",
   "author": {
