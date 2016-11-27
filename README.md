@@ -28,11 +28,21 @@ module.exports = {
 ```js
 // config/kue.js
 module.exports = {
-
+ driver: {
+    prefix: 'q',
+    redis:  {
+      port:    6379,
+      host:    '127.0.0.1',
+      auth:    'password',
+      db:      1, // if provided select a non-default redis db
+      options: {
+        // see https://github.com/mranney/node_redis#rediscreateclient
+      }
+    }
+  },
   /**
-   * Define worker profiles. Each worker of a given type listens for the
-   * "tasks" defined in its profile below. The task names represent a Task
-   * defined in api.services.tasks.
+   * Define tasks profiles.
+   * Each task profile can have a concurrency and refer to a class exposed in api.tasks
    */
   tasks: {
     hello_world: {
