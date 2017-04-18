@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const Service = require('trails-service');
-const Kue     = require("kue");
+const Service = require('trails/service')
+const Kue     = require('kue')
 
 /**
  * @module KueService
@@ -9,26 +9,31 @@ const Kue     = require("kue");
  */
 module.exports = class KueService extends Service {
   init() {
-    const config = this.app.config.kue;
+    this.app.kue = Kue.createQueue(this.app.config.kue.driver)
+    this.jobs    = {}
 
-    this.kueInstance = Kue.createQueue(config.driver);
-    this.tasks       = {}
-
-    const tasks = Object.keys(config.tasks)
-    tasks.forEach(task => {
-      this.addTask(task, config.tasks[task])
+    this.app.config.kue.jobs.forEach(job => {
+      this.addJob(job.name, job)
     })
   }
 
-  addTask(name, task) {
-    let app   = this.app
-    let _task = new this.app.api.tasks[task.controller](app)
-    this.kueInstance.process(name, function(data, done) {
-      _task.run(data, done, app);
+  addJob(name, job, app) {
+    this.jobs[name] = job;
+
+    const taskHandler = new this.app.api.jobs[job.controller](this.app)
+    this.kueInstance.process(name, (data, done) => {
+      taskHandler.run(data, done, this.app)
     })
   }
 
-  addJob(name, obj) {
-    return this.kueInstance.createJob(name, obj)
+  createJob(name, obj) {
+    let jobInstance = this.kueInstance.createJob(name, obj)
+
+    return job
   }
-};
+
+  shutdown(fn) {
+    this.app.kue.shutdown(5000, fn)
+  }
+
+}

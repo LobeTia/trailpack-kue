@@ -8,6 +8,8 @@ This project is built on top of the [Kue](https://github.com/Automattic/kue) lib
 
 ```sh
 $ npm install --save trailpack-kue
+or
+yo trails:trailpack trailpack-kue
 ```
 
 ## Configure
@@ -18,7 +20,7 @@ $ npm install --save trailpack-kue
 module.exports = {
   packs: [
     // ... other trailpacks
-    require('trailpack-tasker')
+    require('trailpack-kue')
   ]
 }
 ```

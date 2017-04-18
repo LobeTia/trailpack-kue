@@ -1,6 +1,6 @@
 'use strict'
 
-const _ = require('lodash')
+const _            = require('lodash')
 const smokesignals = require('smokesignals')
 
 module.exports = _.defaultsDeep({
@@ -8,15 +8,16 @@ module.exports = _.defaultsDeep({
     name: require('../package').name + '-test'
   },
   api: {
-    models: { },
-    controllers: { },
-    services: { }
+    models: {},
+    controllers: {},
+    services: {}
   },
   config: {
+    kue:{
+
+    },
     main: {
       packs: [
-        smokesignals.Trailpack,
-        require('trailpack-core'),
         require('../')
       ]
     }
