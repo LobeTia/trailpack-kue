@@ -18,7 +18,7 @@ module.exports = class KueService extends Service {
   }
 
   addJob(name, job, app) {
-    this.jobs[name] = job;
+    this.jobs[name] = job
 
     const taskHandler = new this.app.api.jobs[job.controller](this.app)
     this.kueInstance.process(name, (data, done) => {
@@ -27,9 +27,8 @@ module.exports = class KueService extends Service {
   }
 
   createJob(name, obj) {
-    let jobInstance = this.kueInstance.createJob(name, obj)
-
-    return job
+    const jobInstance = this.kueInstance.createJob(name, obj)
+    return jobInstance
   }
 
   shutdown(fn) {

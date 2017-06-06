@@ -3,15 +3,15 @@
 const Trailpack = require('trailpack')
 const lib       = require('./lib')
 const _         = require('lodash')
-const config    = require("./lib/config")
+const config    = require('./lib/config')
 
 module.exports = class KueTrailpack extends Trailpack {
 
   constructor(app) {
     super(app, {
       config: require('./config'),
-      api:    require('./api'),
-      pkg:    require('./package')
+      api: require('./api'),
+      pkg: require('./package')
     })
   }
 
@@ -19,7 +19,7 @@ module.exports = class KueTrailpack extends Trailpack {
    * TODO document method
    */
   validate() {
-    if (!this.app.config.kue) throw new Error("app.config.kue not found, please check if is correctly loaded in config/index.js or create it")
+    if (!this.app.config.kue) throw new Error('app.config.kue not found, please check if is correctly loaded in config/index.js or create it')
 
     this.app.config.kue = _.defaultsDeep(this.app.config.kue, config.defaults)
     return lib.Validator.validateKueConfig(this.app.config.kue)

@@ -13,7 +13,7 @@ module.exports = _.defaultsDeep({
     services: {}
   },
   config: {
-    kue:{
+    kue: {
 
     },
     main: {
