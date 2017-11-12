@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const Service = require('trails-service');
-const Kue     = require("kue");
+const Service = require('trails/service')
+const Kue = require('kue')
 
 /**
  * @module KueService
@@ -9,10 +9,10 @@ const Kue     = require("kue");
  */
 module.exports = class KueService extends Service {
   init() {
-    const config = this.app.config.kue;
+    const config = this.app.config.kue
 
-    this.kueInstance = Kue.createQueue(config.driver);
-    this.tasks       = {}
+    this.kueInstance = Kue.createQueue(config.driver)
+    this.tasks = {}
 
     const tasks = Object.keys(config.tasks)
     tasks.forEach(task => {
@@ -21,14 +21,15 @@ module.exports = class KueService extends Service {
   }
 
   addTask(name, task) {
-    let app   = this.app
-    let _task = new this.app.api.tasks[task.controller](app)
-    this.kueInstance.process(name, function(data, done) {
-      _task.run(data, done, app);
+    const app = this.app
+    const newTask = new this.app.api.tasks[task.controller](app)
+    this.kueInstance.process(name, async (data, done) => {
+      await newTask.run(data, app)
+      done()
     })
   }
 
   addJob(name, obj) {
     return this.kueInstance.createJob(name, obj)
   }
-};
+}
