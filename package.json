@@ -19,7 +19,7 @@
   "dependencies": {
     "joi": "10.4.1",
     "kue": "0.11.5",
-    "lodash": "4.17.4",
+    "lodash": "4.17.15",
     "trailpack": "2.1.2"
   },
   "devDependencies": {
